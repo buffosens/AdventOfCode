@@ -6,7 +6,7 @@ asleep = ""
 wakeUp = ""
 cnt = 0
 
-aa = 61
+aa = 62
 bb= 300
 
 mymap = [[0 for xx in range(aa)] for yy in range(bb)]
@@ -56,14 +56,13 @@ def parseTimeInput(s):
                     mymap[j][a.minute + i + 1] = mymap[j][a.minute + i + 1] + 1
                     if(mymap[j][a.minute + i + 1] > 18):
                         print(guardInfo + " " + str(a.minute + i + 1))
+                        print("--> " + str(guardInfo[1:]) + " * " + str((a.minute + i + 1) - 1) + " = " + str(int(guardInfo[1:]) * int((a.minute + i + 1) - 1)))
                 found = True
 
         if(found is False):
             for i in range(int(min)):
                  mymap[cnt][0] = guardInfo
                  mymap[cnt][a.minute + i + 1] = mymap[cnt][a.minute + i + 1] + 1
-                 if (mymap[cnt][a.minute + i + 1] > 18):
-                    print(guardInfo + " " + str(a.minute + i + 1))
 
             cnt = cnt + 1
 
@@ -94,7 +93,11 @@ data.sort()
 for idx in data:
     parseTimeInput(idx)
 
-# print(mymap)
+for i in range(bb):
+    for j in range(1, aa):
+        mymap[i][61] = mymap[i][61] + mymap[i][j]
+
+print(mymap)
 
 
 
