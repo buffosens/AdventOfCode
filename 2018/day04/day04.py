@@ -55,8 +55,8 @@ def parseTimeInput(s):
                 for i in range(int(min)):
                     mymap[j][a.minute + i + 1] = mymap[j][a.minute + i + 1] + 1
                     if(mymap[j][a.minute + i + 1] > 18):
-                        print(guardInfo + " " + str(a.minute + i + 1))
-                        print("--> " + str(guardInfo[1:]) + " * " + str((a.minute + i + 1) - 1) + " = " + str(int(guardInfo[1:]) * int((a.minute + i + 1) - 1)))
+                        #print(guardInfo + " " + str(a.minute + i + 1))
+                        print("Part 2: " + str(int(guardInfo[1:]) * int((a.minute + i + 1) - 1)))
                 found = True
 
         if(found is False):
@@ -65,24 +65,6 @@ def parseTimeInput(s):
                  mymap[cnt][a.minute + i + 1] = mymap[cnt][a.minute + i + 1] + 1
 
             cnt = cnt + 1
-
-
-
-
-
-#timestamp0 = s[0][1:17]
-    #timestamp1 = s[1][1:17]
-
-    #print(timestamp0)
-    #print(timestamp1)
-
-    #a = datetime.datetime.strptime(timestamp0, '%Y-%m-%d %H:%M')
-    #b = datetime.datetime.strptime(timestamp1, '%Y-%m-%d %H:%M')
-
-    #print("This: ", b - a)
-
-    #print(s)
-
 
 print("Hallo day04!")
 
@@ -97,7 +79,21 @@ for i in range(bb):
     for j in range(1, aa):
         mymap[i][61] = mymap[i][61] + mymap[i][j]
 
-print(mymap)
+maxMin = 0
+wantedIdx = 0
+for k in range(bb):
+    if(mymap[k][61] > maxMin):
+        maxMin = mymap[k][61]
+        wantedIdx = k
+
+wantedMin = 0
+wantedMinIdx = 0
+for l in range(1, aa - 1):
+    if(mymap[wantedIdx][l] > wantedMin):
+        wantedMin = mymap[wantedIdx][l]
+        wantedMinIdx = l
+
+print("Part 1: " + str(int(mymap[wantedIdx][0][1:]) * (wantedMinIdx - 1)))
 
 
 
